@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activist Ally - Empowering Change</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add basic styles for the chat modal */
+        .chat-modal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .chat-header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .chat-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .chat-input button {
+            padding: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Style for the MentalBot button */
+        .mentalbot-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Activist Ally</h1>
+            <nav class="navbar">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#events">Events</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Empowering Change, Together</h2>
+            <p>Join Activist Ally and make a difference in your community.</p>
+            <a href="#about" class="btn-cta">Explore Opportunities</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about container">
+        <h2>About Us</h2>
+        <p>Activist Ally is dedicated to supporting activists, creating opportunities, and inspiring change. Our mission is to empower communities by amplifying voices, organizing resources, and connecting like-minded individuals to drive impactful action.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects container">
+        <h2>Our Projects</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <h3>Community Clean-Up</h3>
+                <p>Join us in making our neighborhoods cleaner and greener.</p>
+            </div>
+            <div class="project-card">
+                <h3>Education for All</h3>
+                <p>Supporting equal access to quality education worldwide.</p>
+            </div>
+            <div class="project-card">
+                <h3>Climate Action Now</h3>
+                <p>Fighting for policies that protect our planet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Events Calendar Section -->
+    <section id="events" class="events container">
+        <h2>Upcoming Events</h2>
+        <div id="calendar" class="calendar"></div>
+        <button id="add-event-btn" class="btn-cta">Add Event</button>
+    </section>
+
+    <!-- Event Details Modal -->
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="event-modal-title">Event Details</h3>
+            <p id="event-modal-info"></p>
+        </div>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div id="add-event-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Add New Event</h3>
+            <form id="add-event-form">
+                <label for="event-title">Event Title:</label>
+                <input type="text" id="event-title" required>
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" required>
+                <label for="event-location">Location:</label>
+                <input type="text" id="event-location" required>
+                <label for="event-time">Time:</label>
+                <input type="time" id="event-time" required>
+                <button type="submit" class="btn-submit">Add Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources container">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="#">Guide to Peaceful Protest</a></li>
+            <li><a href="#">How to Mobilize Your Community</a></li>
+            <li><a href="#">Social Media Strategies for Activism</a></li>
+        </ul>
+    </section>
+
+    <!-- Contact Form -->
+    <footer id="contact" class="contact container">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </footer>
+
+    <!-- MentalBot Button -->
+    <button id="mentalbot-btn" class="mentalbot-button">🤖</button>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="chat-modal">
+        <div class="chat-header">MentalBot</div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="send-message-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
